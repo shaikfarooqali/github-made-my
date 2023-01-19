@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '3'))
+        disableConcurrentBuilds()
+    }
+    parameters {
+        string (
+            name: 'pipelinejob',
+            defaultValue: 'testjob',
+            description: 'please provide the parameter'
+        )
+        choice(
+            choices: [ 'yes' , 'no' , 'maybe' ] ,
+            description: 'do you want to build this job',
+            name: 'choicejob'
+        )
+        
+    }
+    stages {
+        stage('start') {
+            steps {
+                echo "this is my starting"
+            }
+        }
+    }
+}

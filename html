@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 pipeline {
     agent any
     options {
@@ -39,45 +38,3 @@ pipeline {
         }
     }
 }
-=======
-pipeline {
-    agent any
-    options {
-        buildDiscarder(logRotator(numToKeepStr: '4'))
-        disableConcurrentBuilds()
-    }
-    parameters {
-        string(
-            name: 'pipeline job',
-            defaultValue: 'testjob',
-            description: 'please provide the parameters'
-        )
-        choice(
-            choices: [ 'up' , 'down' , 'right' , 'left' , 'medium' ] ,
-            description: 'want to build this job?' ,
-            name: 'choicejob'
-        )
-    }
-    stages {
-        stage('check out') {
-            steps {
-                echo "starting"
-                git url: 'https://github.com/githubtraining/hellogitworld.git', branch: 'master' 
-            }
-        }
-        stage('build') {
-            steps {
-                echo "this is my build stage"
-                //withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-creds-pp', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']])  {
-                //}
-                sh "mvn clean install"
-            }
-        }
-        stage('stage-C') {
-            steps {
-                echo "this is my stage-C"
-            }
-        }
-    }
-}
->>>>>>> aef6b99a30c4baf0dd16384549d2c29c6a063921

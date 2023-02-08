@@ -33,8 +33,7 @@ pipeline {
         stage('stage-C') {
             steps {
                 echo "this is my stage-C"
-                
-            }
+                  }
         }
         stage('stage-D') {
             steps {
@@ -45,7 +44,7 @@ pipeline {
         stage('stage-E') {
             steps {
                 echo "this is my stage_E"
-                
+                }
             }
         }
     }

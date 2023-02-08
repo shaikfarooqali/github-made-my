@@ -26,8 +26,8 @@ pipeline {
         stage('login to cloud and deploy') {
             steps {
                 echo "this is my stage-B"
-                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-creds-pp', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']])  {
-                }    
+                //withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-creds-pp', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']])  {
+                //}    
             }
         } 
         stage('stage-C') {

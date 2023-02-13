@@ -41,7 +41,7 @@ pipeline {
                     remote.user = "${remote_user}"
                     remote.password = "${remote_pwd}"
                     remote.allowAnyHosts = true
-                    //sshCommand remote: remote, command: "curl –L –x GET ‘http://192.168.11.159:8080/nexus/artifacts/helloworld.jar'"
+                    //sshCommand remote: remote, command: "curl –L –x GET 'http://localhost:8080/nexus/artifacts/helloworld.jar'"
                     //sshCommand remote: remote, command: "sleep 20"
                     // sshCommand remote: remote, command: "whoami"
                 }

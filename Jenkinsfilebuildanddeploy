@@ -26,7 +26,7 @@ pipeline {
                 script {
                     echo "this is my pulish to nexus"
         dir('/home/cloud_user/.jenkins/workspace/pipeline job build and deploy/target') {
-                    sh 'curl -s -k -u $NEXUS_CREDS_USR:$NEXUS_CREDS_PSW --upload-file *.jar http://192.168.11.159:8081/nexus/farooq-repo/artifacts/jenkins/'
+                    sh 'curl -s -k -u $NEXUS_CREDS_USR:$NEXUS_CREDS_PSW --upload-file *.jar http://localhost:8081/nexus/farooq-repo/artifacts/jenkins/'
                     
                     }
                 }
@@ -41,7 +41,7 @@ pipeline {
                     remote.user = "${remote_user}"
                     remote.password = "${remote_pwd}"
                     remote.allowAnyHosts = true
-                    //sshCommand remote: remote, command: "curl –L –x GET 'http://localhost:8080/nexus/artifacts/helloworld.jar'"
+                    //sshCommand remote: remote, command: "curl –L –x GET 'http://192.168.11.159:8080/nexus/artifacts/helloworld.jar'"
                     //sshCommand remote: remote, command: "sleep 20"
                     // sshCommand remote: remote, command: "whoami"
                 }

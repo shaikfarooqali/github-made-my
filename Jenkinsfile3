@@ -42,7 +42,7 @@ pipeline {
                 }
             }
         }
-        stage('stage: Deplloy the micro service') {
+        stage('stage: Deploy the micro service') {
             steps {
                 script {
                     def remote = [:]

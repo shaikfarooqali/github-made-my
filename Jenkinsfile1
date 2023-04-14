@@ -26,6 +26,7 @@ pipeline {
         stage('build') {
             steps {
                 echo "this is my build stage"
+                sh "mvn clear install"
             }
          }
         stage('login to cloud and deploy') {

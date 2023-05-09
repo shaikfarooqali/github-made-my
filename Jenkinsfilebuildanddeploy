@@ -24,7 +24,7 @@ pipeline {
             }
             steps {
                 script {
-                    echo "this is my pulish to nexus"
+                    echo "this is my publish to nexus"
         dir('/home/cloud_user/.jenkins/workspace/pipeline job build and deploy/target') {
                     sh 'curl -s -k -u $NEXUS_CREDS_USR:$NEXUS_CREDS_PSW --upload-file *.jar http://localhost:8081/nexus/farooq-repo/artifacts/jenkins/'
                     
@@ -32,7 +32,7 @@ pipeline {
                 }
             }
         }
-        stage('deployinto web/app server') {
+        stage('deploy into web/app server') {
             steps {
                 script {
                     def remote = [:]
@@ -47,7 +47,7 @@ pipeline {
                 }
             }
         }
-        stage('stage: Deplloy the micro service') {
+        stage('stage: deploy the micro service') {
             steps {
                 script {
                     def remote = [:]

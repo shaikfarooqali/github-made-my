@@ -18,49 +18,48 @@ pipeline {
                 sh "mvn clean install"
             }
         } 
-        //stage('upload to nexus') {
-            //environment {
-            //NEXUS_CREDS = credentials('nexus')
-            //}
-            //steps {
-                //script {
-                    //echo "this is my publish to nexus"
-        //dir('/home/cloud_user/.jenkins/workspace/pipeline job build and deploy/target') {
-                    //sh 'curl -s -k -u $NEXUS_CREDS_USR:$NEXUS_CREDS_PSW --upload-file *.jar http://localhost:8081/nexus/farooq-repo/artifacts/jenkins/'
-                    
-                    //}
-                //}
-            //}
-        //}
-        //stage('deploy into web/app server') {
-           // steps {
-                //script {
-                    //def remote = [:]
-                    //remote.name = "${my_cloud_host}"
-                    //remote.host = "${my_cloud_ip}"
-                    //remote.user = "${remote_user}"
-                    //remote.password = "${remote_pwd}"
-                    //remote.allowAnyHosts = true
-                    //sshCommand remote: remote, command: "curl –L –x GET 'http://192.168.11.159:8080/nexus/artifacts/helloworld.jar'"
-                    //sshCommand remote: remote, command: "sleep 20"
-                    // sshCommand remote: remote, command: "whoami"
-                //}
-            //}
-        //}
-        //stage('stage: deploy the micro service') {
-            //steps {
-                //script {
-                    //def remote = [:]
-                    //remote.name = "${my_cloud_host}"
-                    //remote.host = "${my_cloud_ip}"
-                    //remote.user = "${remote_user}"
-                    //remote.password = "${remote_pwd}"
-                    //remote.allowAnyHosts = true
-                    //sshCommand remote: remote, command: "/opt/hellowworld/deploy.sh'"
-                    //sshCommand remote: remote, command: "sleep 20"
-                //}
-            //}
-        //}
-    //}
+        stage('upload to nexus') {
+            environment {
+            NEXUS_CREDS = credentials('nexus')
+            }
+            steps {
+                script {
+                    echo "this is my publish to nexus"
+        dir('/home/cloud_user/.jenkins/workspace/pipeline job build and deploy/target') {
+                    sh 'curl -s -k -u $NEXUS_CREDS_USR:$NEXUS_CREDS_PSW --upload-file *.jar http://localhost:8081/nexus/farooq-repo/artifacts/jenkins/'
+                    }
+                }
+            }
+        }
+        stage('deploy into web/app server') {
+           steps {
+                script {
+                    def remote = [:]
+                    remote.name = "${my_cloud_host}"
+                    remote.host = "${my_cloud_ip}"
+                    remote.user = "${remote_user}"
+                    remote.password = "${remote_pwd}"
+                    remote.allowAnyHosts = true
+                    sshCommand remote: remote, command: "curl –L –x GET 'http://192.168.11.159:8080/nexus/artifacts/helloworld.jar'"
+                    sshCommand remote: remote, command: "sleep 20"
+                     sshCommand remote: remote, command: "whoami"
+                }
+            }
+        }
+        stage('stage: deploy the micro service') {
+            steps {
+                script {
+                    def remote = [:]
+                    remote.name = "${my_cloud_host}"
+                    remote.host = "${my_cloud_ip}"
+                    remote.user = "${remote_user}"
+                    remote.password = "${remote_pwd}"
+                    remote.allowAnyHosts = true
+                    sshCommand remote: remote, command: "/opt/hellowworld/deploy.sh'"
+                    sshCommand remote: remote, command: "sleep 20"
+                }
+            }
+        }
+    }
   }
 }

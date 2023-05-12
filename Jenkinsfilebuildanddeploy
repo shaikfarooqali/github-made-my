@@ -57,10 +57,8 @@ pipeline {
                     remote.allowAnyHosts = true
                     sshCommand remote: remote, command: "/opt/hellowworld/deploy.sh'"
                     sshCommand remote: remote, command: "sleep 20"
-                }
              }
           }
        }
     }
-  }
-}
+ }

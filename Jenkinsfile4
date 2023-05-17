@@ -18,6 +18,12 @@ pipeline {
         
     }
     stages {
+        stage('Maven Build') {
+            steps {
+                echo "this my maven build stage"
+                sh "mvn clean install"
+            }
+        }
         stage('initialize') {
             steps {
                 echo "initializing"
